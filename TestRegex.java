@@ -129,4 +129,109 @@ class TestRegex
         boolean expected = false;
         assertEquals(expected,myAccount.set_name("NATHAN DILLA"));
     }
+    @Test
+    void correctPhoneNumber()
+    {
+        account myAccount = new account();
+        boolean expected = true;
+        assertEquals(expected,myAccount.set_phone_number("951-123-4567"));
+    }
+    @Test
+    void incompletePhoneNumber()
+    {
+        account myAccount = new account();
+        boolean expected = false;
+        assertEquals(expected,myAccount.set_phone_number("951-123-"));
+    }
+    @Test
+    void phoneNumberWithLetters()
+    {
+        account myAccount = new account();
+        boolean expected = false;
+        assertEquals(expected,myAccount.set_phone_number("951-123-DFSS"));
+    }
+    @Test
+    void phoneNumberWithSlashes()
+    {
+        account myAccount = new account();
+        boolean expected = false;
+        assertEquals(expected,myAccount.set_phone_number("951/123/1234"));
+    }
+    @Test
+    void phoneNumberWithDots()
+    {
+        account myAccount = new account();
+        boolean expected = false;
+        assertEquals(expected,myAccount.set_phone_number("951.123.1234"));
+    }
+    @Test
+    void phoneNumberInWords()
+    {
+        account myAccount = new account();
+        boolean expected = false;
+        assertEquals(expected,myAccount.set_phone_number("NineFiveOne-OneTwoThree-OneTwoThreeFour"));
+    }
+    @Test
+    void correctAddress()
+    {
+        account myAccount = new account();
+        boolean expected = true;
+        assertEquals(expected,myAccount.set_address("12345 Joe Road"));
+    }
+    @Test
+    void noSuffixAddress()
+    {
+        account myAccount = new account();
+        boolean expected = false;
+        assertEquals(expected,myAccount.set_address("12345 Joe"));
+    }
+    @Test
+    void noNameAddress()
+    {
+        account myAccount = new account();
+        boolean expected = false;
+        assertEquals(expected,myAccount.set_address("12345 Road"));
+    }
+    @Test
+    void noNumberAddress()
+    {
+        account myAccount = new account();
+        boolean expected = false;
+        assertEquals(expected,myAccount.set_address("Joe Road"));
+    }
+    @Test
+    void MulitpleNameAddress()
+    {
+        account myAccount = new account();
+        boolean expected = true;
+        assertEquals(expected,myAccount.set_address("1234 Joe Mama Road"));
+    }
+    @Test
+    void streetSuffixAddress()
+    {
+        account myAccount = new account();
+        boolean expected = true;
+        assertEquals(expected,myAccount.set_address("1234 Joe Street"));
+    }
+    @Test
+    void driveSuffixAddress()
+    {
+        account myAccount = new account();
+        boolean expected = true;
+        assertEquals(expected,myAccount.set_address("1234 Joe Drive"));
+    }
+    @Test
+    void avenueSuffixAddress()
+    {
+        account myAccount = new account();
+        boolean expected = true;
+        assertEquals(expected,myAccount.set_address("1234 Joe Avenue"));
+    }
+    @Test
+    void justSuffixAddress()
+    {
+        account myAccount = new account();
+        boolean expected = false;
+        assertEquals(expected,myAccount.set_address("1234 Avenue"));
+    }
 }

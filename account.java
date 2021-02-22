@@ -72,4 +72,33 @@ public class account
       }
       return output;
     }
+  public boolean set_phone_number(String new_phone_number)
+  {
+    boolean output = false;
+    if (new_phone_number.matches("[0-9]{3}-[0-9]{3}-[0-9]{4}"))
+    {
+      System.out.println(new_phone_number + " accepted.");
+      output = true;
+    }
+    else
+    {
+      System.out.println(new_phone_number + " : Invalid phone number. Must match XXX-XXX-XXXX");
+    }
+    return output;
+  }
+  public boolean set_address(String new_address)
+  {
+    boolean output = false;
+    if (new_address.matches("[0-9]* [[A-Z][a-z]* ]* (Road|Street|Avenue|Court|Way|Drive|Lane|Grove|Place|Circle)"))
+    {
+      System.out.println(new_address + " accepted.");
+      output = true;
+    }
+    else
+    {
+      System.out.println(new_address + " : Invalid address. Must match [###] Xxx [Road, Avenue, Street]");
+    }
+    return output;
+  }
+
 }
